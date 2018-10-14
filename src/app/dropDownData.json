@@ -1,0 +1,21 @@
+{
+    "_id": "5922613c70736c95a185f856",
+    "options": [
+        {
+            "label": "Singapore",
+            "value": "SG"
+        },
+        {
+            "label": "India",
+            "value": "IN"
+        },
+        {
+            "label": "Viet Nam",
+            "value": "VN"
+        },
+        {
+            "label": "United States",
+            "value": "US"
+        }
+    ]
+}

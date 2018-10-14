@@ -1,0 +1,59 @@
+<div class="heading mt-4">
+    <h1>
+        Dropdown Options
+    </h1>
+</div>
+
+<div class="m-3 tableStyle" >
+    <p-table #dt [columns]="cols" [value]="dropDownData" selectionMode="single" [(selection)]="selectedData" (onRowSelect)="onRowSelect($event)">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary" let-rowData>
+            <div style="text-align:left">
+                <button class="btn btn-primary" type="button" pButton (click)="showDialogToAdd()">Add</button>
+                <button class="buttonStyle btn btn-secondary" type="button" pButton (click)="dt.exportCSV()" >Export</button>
+            </div>
+        </ng-template>
+    </p-table>
+
+    <p-dialog header="City Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+        <div class="ui-g ui-fluid" *ngIf="data">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="label">City</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="label" [(ngModel)]="data.label" />
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="value">Acronym</label>
+                </div>
+                <div class="ui-g-8">
+                    <input pInputText id="value" [(ngModel)]="data.value" />
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button class="btn btn-danger" type="button" pButton (click)="delete()">Delete</button>
+                <button class="btn btn-success" type="button" pButton (click)="save()">Save</button>
+            </div>
+        </p-footer>
+    </p-dialog>
+
+</div>
